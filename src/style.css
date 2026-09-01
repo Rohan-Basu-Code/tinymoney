@@ -103,7 +103,7 @@ body:has(.dark){
 .container .nav-button{
     z-index: 100;
     position: absolute;
-    bottom: 40px;
+    bottom: 140px;
     right:20px;
     font-size: var(--font-4);
     border: none;
