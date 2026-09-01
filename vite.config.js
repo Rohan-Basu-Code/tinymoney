@@ -20,15 +20,15 @@ export default defineConfig({
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
-        start_url: '/',
+        start_url: '/tinymoney/',
         icons: [
           {
-            src: '/logo_true2.png',
+            src: '/tinymoney/logo_true2.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/logo_true2.png',
+            src: '/tinymoney/logo_true2.png',
             sizes: '512x512',
             type: 'image/png'
           }
