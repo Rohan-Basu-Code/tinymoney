@@ -14,8 +14,8 @@ export default defineConfig({
       registerSW: true,
 
       manifest: {
-        name: 'Shop Sales',
-        short_name: 'Shop',
+        name: 'Tiny Money',
+        short_name: 'TinyMoney',
         description: 'Shop sales and product management',
         theme_color: '#ffffff',
         background_color: '#ffffff',
