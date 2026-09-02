@@ -43,12 +43,18 @@
 --c-d:#5ba3ae;
 --c-m:#76afb2;
 --c-l:#E5E1DA;
+--c-green: #58b15e;
+--c-red: #cd424b;
+
 
   --dark-bg: #0F3040;
   --dark-f: #f0ebe4;
   --dark-d: #0b2735;
   --dark-m: #A56F63;
   --dark-l: #D99B7F;
+  --dark-green: #148b3a;
+  --dark-red: #8a122a;
+
 }
 
 /* .light{
@@ -65,6 +71,8 @@
     --accent-light: var(--c-l);
     --background: var(--c-bg);
     --font: var(--c-f);
+    --green: var(--c-green);
+    --red: var(--c-red);
 }
 
 .dark{
@@ -73,6 +81,8 @@
     --accent-light: var(--dark-d);
     --background: var(--dark-bg);
     --font: var(--dark-f);
+    --green: var(--dark-green);
+    --red: var(--dark-red);
 }
 
 *{
@@ -102,8 +112,8 @@ body:has(.dark){
 }
 .container .nav-button{
     z-index: 100;
-    position: absolute;
-    bottom: 140px;
+    position: fixed;
+    bottom: calc(20px + env(safe-area-inset-bottom));
     right:20px;
     font-size: var(--font-4);
     border: none;
@@ -311,7 +321,7 @@ translate: 0;
     width: 100%;
     padding: 0.2rem 5px;
     font-size: var(--font--1);
-    border-radius: 5px;
+    border-radius: 3px;
     color: var(--font);
     background-color: var(--accent-light);
 }
@@ -464,18 +474,7 @@ translate: 0;
     max-height: none;
 }
 
-.popup{
-    position: fixed;
-    left: 5px;
-    right: 5px;
-    color: var(--background);
-    display: block;
-    padding: 10px 20px;
-    border-radius: 5px;
-    z-index: 40;
-    top:-100%;
-    transition: all 0.1s;
-}
+
 
 .more{
     position: relative;
@@ -565,11 +564,27 @@ translate: 0;
     margin-left: 5px;
 }
 
+.popup{
+    position: fixed; 
+    right: 5px;
+    width: 450px;
+    max-width: calc(100dvw - 10px);
+    color: var(--background);
+    display: block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 40;
+    top:-100%;
+    transition: all 0.1s;
+}
+
 .green{
-    background-color: rgb(0, 134, 40);
+    background-color: var(--green);
+    color: var(--c-bg);
 }
 .red{
-    background-color: rgb(178, 0, 0);
+    background-color: var(--red);
+    color: var(--c-bg);
 }
 .popup.show{
     top: 5px;
