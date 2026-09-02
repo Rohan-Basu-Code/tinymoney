@@ -212,8 +212,18 @@ border-radius: var(--font--1);
 box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.336);
 scale: 1.2;
 }
+
+.container main p:has(a){
+    margin-top: 15px;
+}
+
 .container main a{
+    background-color: var(--accent-mid);
+    padding: 2px 8px 5px 8px;
+    /* border: 2px solid var(--accent-dark); */
+    border-radius: 3px;
     color: var(--font) !important;
+    text-decoration: none;
 }
 .container nav .nav-close{
     font-size: var(--font-3);
