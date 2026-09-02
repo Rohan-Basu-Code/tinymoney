@@ -307,7 +307,9 @@ return(
                             <p>Are you sure you want to delete all entries?</p>
                             <p>This process is <strong>irriversable</strong>.</p>
                             <p>Please make sure to <strong>Export</strong> the data first.</p>
-                            <button onClick={async ()=>{
+                            <button
+                            className="red"
+                             onClick={async ()=>{
                                 await deleteAllEntries();
                                 setEntries([]);
                                 setSelectedRow(null)
@@ -322,7 +324,9 @@ return(
                                 <span>{entries.find(entry => entry.time === selectedRow)?.count} = </span>
                                 <span>{entries.find(entry => entry.time === selectedRow)?.count * entries.find(entry => entry.time === selectedRow)?.price} /-</span>
                             </p>
-                            <button onClick={async ()=>{
+                            <button
+                                className="red"
+                             onClick={async ()=>{
                                 handleDelete(selectedRow)
                                 setActionMenu(false)
                                 setSelectedRow(null)

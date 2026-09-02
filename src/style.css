@@ -47,11 +47,11 @@
 --c-red: #cd424b;
 
 
-  --dark-bg: #0F3040;
-  --dark-f: #f0ebe4;
-  --dark-d: #0b2735;
-  --dark-m: #A56F63;
-  --dark-l: #D99B7F;
+  --dark-bg: #132a3b;
+  --dark-f: #D2C1B6;
+  --dark-d: #1B3C53;
+  --dark-m: #234C6A;
+  --dark-l: #456882;
   --dark-green: #148b3a;
   --dark-red: #8a122a;
 
@@ -593,7 +593,7 @@ translate: 0;
     color: var(--c-bg);
 }
 .red{
-    background-color: var(--red);
+    background-color: var(--red) !important;
     color: var(--c-bg);
 }
 .popup.show{

@@ -563,7 +563,10 @@ function Products({ products, setProducts }) {
                                                 <p>Are you sure you want to delete all products?</p>
                                                 <p>This process is <strong>irriversable</strong>.</p>
                                                 <p>Please make sure to <strong>Export</strong> the data first.</p>
-                                                <button onClick={async ()=>{
+                                                <button
+                                                
+                                                className="red" 
+                                                onClick={async ()=>{
                                                     await handleDeleteAll();
                                                     setProducts([]);
                                                     setSelectedRow(null)
@@ -578,7 +581,10 @@ function Products({ products, setProducts }) {
                                                     <span>({products.find(prod => prod.name === selectedRow)?.type}) --------- </span>
                                                     <span>{products.find(prod => prod.name === selectedRow)?.price} /-</span>
                                                 </p>
-                                                <button onClick={async ()=>{
+                                                <button
+                                                
+                                                className="red" 
+                                                onClick={async ()=>{
                                                     handleDelete()
                                                     setActionMenu(false)
                                                     setSelectedRow(null)
