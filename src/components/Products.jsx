@@ -280,10 +280,7 @@ function Products({ products, setProducts }) {
             );
 
 
-        // ------------------------------
         // ARROW DOWN
-        // ------------------------------
-
         if (e.key === "ArrowDown") {
 
             e.preventDefault();
@@ -307,10 +304,7 @@ function Products({ products, setProducts }) {
         }
 
 
-        // ------------------------------
         // ARROW UP
-        // ------------------------------
-
         if (e.key === "ArrowUp") {
 
             e.preventDefault();
@@ -331,10 +325,7 @@ function Products({ products, setProducts }) {
         }
 
 
-        // ------------------------------
         // DELETE
-        // ------------------------------
-
         if (e.key === "Delete") {
 
             e.preventDefault();

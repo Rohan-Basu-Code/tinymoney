@@ -275,15 +275,6 @@ return(
                                         Edit
                                     </button>
 
-                                    {/* <button 
-                                    onClick={() => {
-                                        handleDelete(selectedRow)
-                                        setActionMenu(false)
-                                    }}
-                                    >
-                                        Delete
-                                    </button> */}
-
                                     <button 
                                     onClick={() => {setConfirm(()=>handleDelete)
                                     }}

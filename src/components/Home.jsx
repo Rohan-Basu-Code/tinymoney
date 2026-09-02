@@ -177,5 +177,3 @@ else
 ) 
 }
 export default Home
-
-// ↵▤≡⨉
