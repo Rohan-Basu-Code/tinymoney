@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import * as XLSX from "xlsx";
 
@@ -15,6 +15,15 @@ function ShowEntries({entries, setEntries}) {
     const [filterName, setFilterName] = useState("");
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
+
+    const[columnView,SetColumnView]= useState(()=>{return localStorage.getItem("clview") || {rate: true,
+        total: false,
+        date: true}
+    })
+
+    useEffect(()=>{
+        localStorage.setItem("clview", columnView);
+    },[columnView])
 
 
 
@@ -185,7 +194,23 @@ return(
                 disabled={entries.length===0}>
                 Delete All Entries
                 </button>
+                <div className="column-view-container">
+                    <p>Column View</p>
+                    <div className="column-view">
+                        <label htmlFor="clrate">Rate</label>
+                        <input type="checkbox" name="clrate" id="clrate" checked={columnView.rate} onClick={()=>SetColumnView(prev=>({...prev, rate: !prev.rate}))} />
+                        
+                        <label htmlFor="cltotal">Total</label>
+                        <input type="checkbox" name="cltotal" id="cltotal" checked={columnView.total} onClick={()=>SetColumnView(prev=>({...prev, total: !prev.total}))} />
+                        
+                        <label htmlFor="cldate">Date</label>
+                        <input type="checkbox" name="cldate" id="cldate" checked={columnView.date} onClick={()=>SetColumnView(prev=>({...prev, date: !prev.date}))} />
+                    </div>
+                </div>
             </div>
+
+
+
             <button onClick={()=> setFilter(prev => !prev)} className={`more ${filter && 'active'}`}>Filter</button>
             <div className={`more-window ${filter && 'active'}`}>
 
@@ -241,9 +266,10 @@ return(
                 <thead>
                     <tr> 
                         <td>Name</td>
-                        <td>Quantity</td>
-                        <td>Selling Price</td> 
-                        <td>Date</td>
+                        <td>Qty.</td>
+                        {columnView.rate &&<td>Rate</td>}
+                        {columnView.total &&<td>Total</td>}
+                        {columnView.date &&<td>Date</td>}
                     </tr>
                 </thead>
                 <tbody>
@@ -258,8 +284,9 @@ return(
                     > 
                         <td>{entry.name}</td>
                         <td>{entry.count}</td>
-                        <td>{entry.price} /-</td> 
-                        <td>{new Date(entry.time).toLocaleDateString('en-GB')}</td>
+                        {columnView.rate &&<td>{entry.price} /-</td> }
+                        {columnView.total &&<td>{entry.count * entry.price} /-</td>}
+                        {columnView.date &&<td>{new Date(entry.time).toLocaleDateString('en-GB')}</td>}
                     </tr>
                 )}
                 </tbody>

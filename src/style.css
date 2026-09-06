@@ -599,3 +599,31 @@ translate: 0;
 .popup.show{
     top: 5px;
 }
+
+.column-view-container{
+    text-align: right;
+}
+
+.column-view{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    gap: var(--font-0);
+    margin-block: var(--font--4);
+}
+
+.column-view >input{
+    display: none;
+}
+
+.column-view >label{
+    padding: 0 12px;
+    border-radius: 3px;
+    border: 1px solid var(--font);
+}
+
+.column-view >label:has(+ input:checked){
+    background-color: var(--font);
+    border-radius: 3px;
+    color: var(--background);
+}
