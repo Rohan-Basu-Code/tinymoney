@@ -108,7 +108,7 @@ function ShowEntries({entries, setEntries}) {
         const data = filteredEntries.map(entry => ({
             Product: entry.name,
             Quantity: entry.count,
-            "Selling Price": entry.price,
+            Rate: entry.price,
             Total: entry.count * entry.price,
             Date: new Date(entry.time)
         }));
@@ -265,9 +265,9 @@ return(
             >
                 <thead>
                     <tr> 
-                        <td>Name</td>
-                        <td>Qty.</td>
+                        <td>Name</td> 
                         {columnView.rate &&<td>Rate</td>}
+                        <td>Qty.</td>
                         {columnView.total &&<td>Total</td>}
                         {columnView.date &&<td>Date</td>}
                     </tr>
@@ -283,8 +283,8 @@ return(
                     onTouchMove={cancelLongPress}
                     > 
                         <td>{entry.name}</td>
-                        <td>{entry.count}</td>
                         {columnView.rate &&<td>{entry.price} /-</td> }
+                        <td>{entry.count}</td>
                         {columnView.total &&<td>{entry.count * entry.price} /-</td>}
                         {columnView.date &&<td>{new Date(entry.time).toLocaleDateString('en-GB')}</td>}
                     </tr>
