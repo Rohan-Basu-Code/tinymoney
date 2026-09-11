@@ -139,7 +139,7 @@ else
                         <select name="item" id="item" disabled={!type} value={item} onChange={(e)=> setItem(e.target.value)}>
                             <option value="" disabled={true}>Select Product</option>
                             {
-                                products?.filter(product=> product.type=== type).map(product => <option key={product.name} value={product.name}>{product.name}</option>)
+                                products?.filter(product=> product.type=== type).map(product => <option key={product.name} value={product.name}>{product.name} ({product.price}/-)</option>)
                             }
                         </select>
 

@@ -16,7 +16,7 @@ function ShowEntries({entries, setEntries}) {
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
 
-    const[columnView,SetColumnView]= useState(()=>{return localStorage.getItem("clview") || {rate: true,
+    const[columnView,SetColumnView]= useState(()=>{return localStorage.getItem("clview") || {
         total: false,
         date: true}
     })
@@ -107,8 +107,8 @@ function ShowEntries({entries, setEntries}) {
     const exportToExcel = () => {
         const data = filteredEntries.map(entry => ({
             Product: entry.name,
-            Quantity: entry.count,
             Rate: entry.price,
+            Quantity: entry.count,
             Total: entry.count * entry.price,
             Date: new Date(entry.time)
         }));
@@ -197,8 +197,6 @@ return(
                 <div className="column-view-container">
                     <p>Column View</p>
                     <div className="column-view">
-                        <label htmlFor="clrate">Rate</label>
-                        <input type="checkbox" name="clrate" id="clrate" checked={columnView.rate} onClick={()=>SetColumnView(prev=>({...prev, rate: !prev.rate}))} />
                         
                         <label htmlFor="cltotal">Total</label>
                         <input type="checkbox" name="cltotal" id="cltotal" checked={columnView.total} onClick={()=>SetColumnView(prev=>({...prev, total: !prev.total}))} />
@@ -266,7 +264,7 @@ return(
                 <thead>
                     <tr> 
                         <td>Name</td> 
-                        {columnView.rate &&<td>Rate</td>}
+                        <td>Rate</td>
                         <td>Qty.</td>
                         {columnView.total &&<td>Total</td>}
                         {columnView.date &&<td>Date</td>}
@@ -283,7 +281,7 @@ return(
                     onTouchMove={cancelLongPress}
                     > 
                         <td>{entry.name}</td>
-                        {columnView.rate &&<td>{entry.price} /-</td> }
+                        <td>{entry.price} /-</td>
                         <td>{entry.count}</td>
                         {columnView.total &&<td>{entry.count * entry.price} /-</td>}
                         {columnView.date &&<td>{new Date(entry.time).toLocaleDateString('en-GB')}</td>}
