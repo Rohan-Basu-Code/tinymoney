@@ -113,7 +113,7 @@ body:has(.dark){
 .container .nav-button{
     z-index: 100;
     position: fixed;
-    bottom: calc(20px + env(safe-area-inset-bottom));
+    bottom: calc(70px + env(safe-area-inset-bottom));
     right:20px;
     font-size: var(--font-4);
     border: none;
