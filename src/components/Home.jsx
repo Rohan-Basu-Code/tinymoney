@@ -161,7 +161,7 @@ function Home({ entries, setEntries, products }) {
         }
 
         setType('');
-        setItem('');
+        setItem('Discount');
         setPrice('');
         setCount(1);
         setEditing(false);
@@ -184,7 +184,7 @@ function Home({ entries, setEntries, products }) {
             const discountEntry = {
                 time: Date.now(),
                 type: "discount",
-                name: "",
+                name: "Discount",
                 count: 1,
                 price: -discountAmount
             };

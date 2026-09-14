@@ -286,7 +286,7 @@ return(
                     {filteredEntries.map(entry=>
                     <tr 
                     key={entry.time}
-                    className={selectedRow===entry.time? "selected": ''} 
+                    className={`${selectedRow === entry.time ? "selected" : ""} ${entry.price < 0 ? "f-red" : ""}`}
                     onClick={()=>setSelectedRow(entry.time)}
                     onTouchStart={() => startLongPress(entry.time)}
                     onTouchEnd={cancelLongPress}

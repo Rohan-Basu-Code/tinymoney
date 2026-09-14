@@ -586,6 +586,11 @@ translate: 0;
     background-color: var(--red) !important;
     color: var(--c-bg);
 }
+
+.f-red{
+    color: var(--c-red) !important; 
+}
+
 .popup.show{
     top: 5px;
 }
