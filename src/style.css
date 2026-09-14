@@ -352,16 +352,6 @@ translate: 0;
     font-size: var(--font--1);
     color: var(--font); 
 }
-.container main form button.reset{
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    font-size: var(--font-4); 
-    padding: 0;
-    margin-left: 20px;
-
-}
 
 .container main form button:disabled{
     background-color: var(--accent-light);

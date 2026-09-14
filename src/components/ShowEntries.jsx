@@ -16,14 +16,26 @@ function ShowEntries({entries, setEntries}) {
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
 
-    const[columnView,SetColumnView]= useState(()=>{return localStorage.getItem("clview") || {
-        total: false,
-        date: true}
-    })
+    const [columnView, SetColumnView] = useState(() => {
+        const saved = localStorage.getItem("clview");
 
-    useEffect(()=>{
-        localStorage.setItem("clview", columnView);
-    },[columnView])
+        if (saved) {
+            try {
+                return JSON.parse(saved);
+            } catch {
+                localStorage.removeItem("clview");
+            }
+        }
+
+        return {
+            total: false,
+            date: true
+        };
+    });
+
+    useEffect(() => {
+    localStorage.setItem("clview", JSON.stringify(columnView));
+}, [columnView]);
 
 
 
