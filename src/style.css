@@ -20,15 +20,15 @@
 }
 
 :root {
-  --font--4: clamp(0.3617rem, 0.3297rem + 0.2129vw, 0.4096rem);
-  --font--3: clamp(0.434rem, 0.382rem + 0.3465vw, 0.512rem);
-  --font--2: clamp(0.5208rem, 0.4414rem + 0.5296vw, 0.64rem);
-  --font--1: clamp(0.625rem, 0.5083rem + 0.7778vw, 0.8rem);
-  --font-0: clamp(0.75rem, 0.5833rem + 1.1111vw, 1rem);
-  --font-1: clamp(0.9rem, 0.6667rem + 1.5556vw, 1.25rem);
-  --font-2: clamp(1.08rem, 0.7583rem + 2.1444vw, 1.5625rem);
-  --font-3: clamp(1.296rem, 0.8579rem + 2.9206vw, 1.9531rem);
-  --font-4: clamp(1.5552rem, 0.9644rem + 3.9387vw, 2.4414rem);
+  --font--4: clamp(0.3918rem, 0.3544rem + 0.2496vw, 0.448rem);
+  --font--3: clamp(0.4702rem, 0.4103rem + 0.3991vw, 0.56rem);
+  --font--2: clamp(0.5642rem, 0.4737rem + 0.6034vw, 0.7rem);
+  --font--1: clamp(0.6771rem, 0.5451rem + 0.8796vw, 0.875rem);
+  --font-0: clamp(0.8125rem, 0.625rem + 1.25vw, 1.0938rem);
+  --font-1: clamp(0.975rem, 0.7135rem + 1.7431vw, 1.3672rem);
+  --font-2: clamp(1.17rem, 0.8107rem + 2.3955vw, 1.709rem);
+  --font-3: clamp(1.404rem, 0.9158rem + 3.2544vw, 2.1362rem);
+  --font-4: clamp(1.6848rem, 1.0278rem + 4.3799vw, 2.6703rem);
 
   --light-f: #1b1f22;
   --light-d: #545d65;
