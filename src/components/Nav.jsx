@@ -2,6 +2,9 @@ import { NavLink } from "react-router-dom"
 function Nav({showNav,setShowNav,theme, setTheme}) {
     return(
         <nav className={showNav? 'show':''}>
+            
+            <img src={`${import.meta.env.BASE_URL}logo_192x192.png`} alt="TinyMoney" />
+            
             <button className={`theme-btn ${theme==='light'?'theme-light':'theme-dark'}`} onClick={()=> setTheme(prev=> prev==='light'?'dark':'light')}></button>
             <NavLink to="/" onClick={()=>setShowNav(false)}>Home</NavLink>
             <NavLink to="/sales" onClick={()=>setShowNav(false)}>Sales</NavLink>

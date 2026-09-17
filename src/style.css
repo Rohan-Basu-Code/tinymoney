@@ -20,16 +20,15 @@
 }
 
 :root {
-  --font--4: clamp(0.512rem, 0.5593rem + -0.0611vw, 0.5425rem);
-  --font--3: clamp(0.64rem, 0.6571rem + -0.0221vw, 0.651rem);
-  --font--2: clamp(0.7813rem, 0.7709rem + 0.0375vw, 0.8rem);
-  --font--1: clamp(0.9375rem, 0.9031rem + 0.125vw, 1rem);
-  --font-0: clamp(1.125rem, 1.0563rem + 0.25vw, 1.25rem);
-  --font-1: clamp(1.35rem, 1.2331rem + 0.425vw, 1.5625rem);
-  --font-2: clamp(1.62rem, 1.4368rem + 0.6663vw, 1.9531rem);
-  --font-3: clamp(1.944rem, 1.6704rem + 0.9948vw, 2.4414rem);
-  --font-4: clamp(2.3328rem, 1.9374rem + 1.4379vw, 3.0518rem);
-  --font-5: clamp(2.7994rem, 2.2409rem + 2.0307vw, 3.8147rem);
+  --font--4: clamp(0.3617rem, 0.3297rem + 0.2129vw, 0.4096rem);
+  --font--3: clamp(0.434rem, 0.382rem + 0.3465vw, 0.512rem);
+  --font--2: clamp(0.5208rem, 0.4414rem + 0.5296vw, 0.64rem);
+  --font--1: clamp(0.625rem, 0.5083rem + 0.7778vw, 0.8rem);
+  --font-0: clamp(0.75rem, 0.5833rem + 1.1111vw, 1rem);
+  --font-1: clamp(0.9rem, 0.6667rem + 1.5556vw, 1.25rem);
+  --font-2: clamp(1.08rem, 0.7583rem + 2.1444vw, 1.5625rem);
+  --font-3: clamp(1.296rem, 0.8579rem + 2.9206vw, 1.9531rem);
+  --font-4: clamp(1.5552rem, 0.9644rem + 3.9387vw, 2.4414rem);
 
   --light-f: #1b1f22;
   --light-d: #545d65;
@@ -95,6 +94,9 @@
 }
 body{
     font-family: "Open Sans", sans-serif;
+    max-width: 600px;
+    margin-inline: auto;
+    position: relative;
 }
 body:has(.dark){
     background-color: var(--dark-d);
@@ -105,14 +107,14 @@ body:has(.dark){
     color: var(--font);
     position: relative;
     overflow: hidden;
-    max-width: 768px;
+    max-width: 600px;
     margin-inline: auto;
     box-shadow: 0 0 5px #0005;
     background-color: var(--background);
 }
 .container .nav-button{
     z-index: 100;
-    position: fixed;
+    position: absolute;
     bottom: calc(70px + env(safe-area-inset-bottom));
     right:20px;
     font-size: var(--font-4);
@@ -142,7 +144,9 @@ body:has(.dark){
     left: 0;
     right: 0;
     z-index: 90;
-    background-color: #545d65cf;
+    background-color: #1b1d23b0;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 }
 .container nav{ 
     z-index: 100;
@@ -163,6 +167,13 @@ body:has(.dark){
     background-color: var(--accent-light); 
     translate: 100%;
     transition: all 0.2s;
+}
+
+
+.container nav img{
+    position: absolute;
+    top: 20px;
+    width: calc(var(--font-4)*2)
 }
 
 .theme-btn{
@@ -292,7 +303,7 @@ translate: 0;
 
 .container main form{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     column-gap: var(--font-0);
     row-gap: var(--font-0);
 

@@ -19,30 +19,39 @@ function Home({ entries, setEntries, products }) {
         })
         .reduce((total, entry) => {
 
-            // Discount entries already contain a negative price
+            // Discount entry
             if (entry.type === "discount") {
                 return total + Number(entry.price);
             }
 
-            return total + (Number(entry.count) * Number(entry.price));
+            // Normal sale entry
+            return total + (
+                Number(entry.count) * Number(entry.price)
+            );
 
         }, 0);
 
 
     const [editing, setEditing] = useState(false);
+
     const [type, setType] = useState('');
+
     const [item, setItem] = useState('');
+
     const [price, setPrice] = useState('');
+
     const [count, setCount] = useState(1);
 
     const [entrySet, setEntrySet] = useState(0);
+
     const [discount, setDiscount] = useState(0);
 
     const [showPopUp, setShowPopUp] = useState(false);
 
 
     /*
-     * Get price automatically from selected product
+     * Get product price automatically
+     * when a product is selected.
      */
     useEffect(() => {
 
@@ -62,7 +71,7 @@ function Home({ entries, setEntries, products }) {
 
 
     /*
-     * Load entry when editing
+     * Load entry when editing.
      */
     useEffect(() => {
 
@@ -71,10 +80,12 @@ function Home({ entries, setEntries, products }) {
             setEditing(true);
 
             setItem(editEntry.name);
+
             setCount(editEntry.count);
+
             setPrice(editEntry.price);
 
-            const product = products.find(
+            const product = products?.find(
                 product => product.name === editEntry.name
             );
 
@@ -87,21 +98,23 @@ function Home({ entries, setEntries, products }) {
 
 
     /*
-     * Popup
+     * Success popup.
      */
     useEffect(() => {
 
         if (showPopUp) {
+
             setTimeout(() => {
                 setShowPopUp(false);
             }, 1000);
+
         }
 
     }, [showPopUp]);
 
 
     /*
-     * Add / update product entry
+     * Add / update product entry.
      */
     const onSubmit = async (e) => {
 
@@ -145,7 +158,7 @@ function Home({ entries, setEntries, products }) {
                 time: Date.now(),
                 name: item,
                 count: Number(count),
-                price: Number(product.price)
+                price: Number(price)
             };
 
             await addEntry(entry);
@@ -156,14 +169,22 @@ function Home({ entries, setEntries, products }) {
             ]);
 
             setEntrySet(prev =>
-                prev + (entry.price * entry.count)
+                prev + (
+                    Number(entry.price) *
+                    Number(entry.count)
+                )
             );
         }
 
+
         setType('');
-        setItem('Discount');
+
+        setItem('');
+
         setPrice('');
+
         setCount(1);
+
         setEditing(false);
 
         setShowPopUp(true);
@@ -171,9 +192,10 @@ function Home({ entries, setEntries, products }) {
 
 
     /*
-     * End current transaction
+     * End current transaction.
      *
-     * Discount is saved as a negative price/rate.
+     * The discount is stored as a negative
+     * price/rate entry.
      */
     const resetSale = async () => {
 
@@ -184,8 +206,8 @@ function Home({ entries, setEntries, products }) {
             const discountEntry = {
                 time: Date.now(),
                 type: "discount",
-                name: "Discount",
-                count: 1,
+                name: "",
+                count: 0,
                 price: -discountAmount
             };
 
@@ -198,19 +220,32 @@ function Home({ entries, setEntries, products }) {
         }
 
         setEntrySet(0);
+
         setDiscount(0);
     };
 
 
+    /*
+     * Final amount after discount.
+     */
     const finalTotal =
         entrySet - Number(discount);
 
 
+    /*
+     * Discount must be:
+     *
+     * 0 or greater
+     * less than Grand Total
+     */
     const discountIsValid =
         Number(discount) >= 0 &&
         Number(discount) < entrySet;
 
 
+    /*
+     * No products available.
+     */
     if (!products || products.length === 0) {
 
         return (
@@ -240,7 +275,9 @@ function Home({ entries, setEntries, products }) {
                 Entry saved successfully
             </p>
 
+
             <h1>Home</h1>
+
 
             <h4>
                 Today's total sale: {todayTotal} Rs.
@@ -366,15 +403,42 @@ function Home({ entries, setEntries, products }) {
                 </p>
 
 
+                {/* PRICE */}
+
+                <p>
+
+                    <label htmlFor="price">
+                        Price:
+                    </label>
+
+                    <input
+                        type="number"
+                        min={0}
+                        step={0.5}
+                        name="price"
+                        id="price"
+                        disabled={!item}
+                        value={price}
+                        onChange={(e) =>
+                            setPrice(Number(e.target.value))
+                        }
+                    />
+
+                </p>
+
+
                 {/* ITEM TOTAL */}
 
                 <p>
                     Item Total:{" "}
-                    {(Number(price) * Number(count)) || 0}₹
+                    {(
+                        Number(price) *
+                        Number(count)
+                    ) || 0}₹
                 </p>
 
 
-                {/* ADD / UPDATE */}
+                {/* ADD */}
 
                 <button
                     disabled={!price}
@@ -395,7 +459,7 @@ function Home({ entries, setEntries, products }) {
                     <input
                         type="number"
                         min={0}
-                        step={1}
+                        step={0.5}
                         id="discount"
                         value={discount}
                         disabled={entrySet === 0}
@@ -407,14 +471,15 @@ function Home({ entries, setEntries, products }) {
                 </p>
 
 
-                {/* TOTAL */}
+                {/* TOTALS */}
 
                 <p>
 
                     Grand Total: {entrySet}₹
+
                     <br />
 
-                    Final Price: {finalTotal}₹
+                    Final Total: {finalTotal}₹
 
                 </p>
 
@@ -423,6 +488,7 @@ function Home({ entries, setEntries, products }) {
 
                 <button
                     type="button"
+                    className="reset"
                     onClick={resetSale}
                     disabled={
                         entrySet === 0 ||
