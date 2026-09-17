@@ -161,7 +161,7 @@ body:has(.dark){
     gap:5px;
     width: 20em;
     max-width: 60%;
-    padding-bottom: 1rem;
+    padding-bottom: calc(70px + env(safe-area-inset-bottom));
     padding-inline: 1em;
     font-size: var(--font--2);
     background-color: var(--accent-light); 
@@ -194,8 +194,6 @@ position: absolute;
 content: '◌';
 top: 0;
 left: 0;
-
-
 font-size: var(--font-1);
 display: flex;
 align-items: center;
