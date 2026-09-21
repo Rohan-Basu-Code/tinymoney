@@ -170,10 +170,9 @@ body:has(.dark){
 }
 
 
-.container nav img{
+.container nav svg{
     position: absolute;
     top: 20px;
-    width: calc(var(--font-4)*2)
 }
 
 .theme-btn{
