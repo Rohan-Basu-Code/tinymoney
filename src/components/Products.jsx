@@ -18,7 +18,7 @@ const formatName = (value) => {
 
 function Products({ products, setProducts }) {
 
-    const MAX_TYPES = 12;
+    const MAX_TYPES = 14;
 
     // STATES
     const [actionMenu, setActionMenu] = useState(false);
